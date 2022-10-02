@@ -4,6 +4,7 @@ import { useState } from "react";
 
 function App() {
   const [counter, setCounter] = useState(0);
+  const [disabled, setDisabled] = useState(false);
 
   return (
     <div className="App">
@@ -11,6 +12,7 @@ function App() {
         <h3 data-testid="counter">{counter}</h3>
         <button
           data-testid="btnminus"
+          disabled={disabled}
           onClick={() => setCounter((prev) => prev - 1)}
         >
           {" "}
@@ -18,10 +20,18 @@ function App() {
         </button>
         <button
           data-testid="btnplus"
+          disabled={disabled}
           onClick={() => setCounter((prev) => prev + 1)}
         >
           {" "}
           +{" "}
+        </button>
+        <button
+          style={{ backgroundColor: "blue" }}
+          data-testid="on/off-btn"
+          onClick={() => setDisabled((prev) => !prev)}
+        >
+          On/Off
         </button>
       </header>
     </div>
